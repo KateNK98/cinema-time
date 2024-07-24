@@ -1,10 +1,12 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Container from 'react-bootstrap/Container';
 
 function App() {
 
   return (
-    <>
-      <h1>CinemaTime</h1>
-    </>
+    <Container fluid>
+      <h1>Wellcome to CinemaTime</h1>
+    </Container>
   )
 }
 
