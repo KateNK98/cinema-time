@@ -1,11 +1,12 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
+import Header from './components/header/Header.jsx';
 
 function App() {
 
   return (
     <Container fluid>
-      <h1>Wellcome to CinemaTime</h1>
+      <Header />
     </Container>
   )
 }
