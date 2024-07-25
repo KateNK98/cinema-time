@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Header from './components/header/Header.jsx';
-import Slider from './components/slider/Slider.jsx';
+import Slider from './components/homeVideo/VideoHome.jsx';
 
 function App() {
 
