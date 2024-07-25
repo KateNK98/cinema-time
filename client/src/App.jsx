@@ -1,15 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Container from 'react-bootstrap/Container';
 import Header from './components/header/Header.jsx';
-import Slider from './components/homeVideo/VideoHome.jsx';
+import VideoHome from './components/homeVideo/VideoHome.jsx';
 
 function App() {
 
   return (
-    <Container fluid>
+    <Container className='fluid'>
       <Header />
 
-      <Slider />  
+      <VideoHome />  
     </Container>
   )
 }
