@@ -1,23 +1,25 @@
+import{Routes, Route} from 'react-router-dom'
+
 import Container from 'react-bootstrap/Container';
 import Header from './components/header/Header.jsx';
-import VideoHome from './components/homeVideo/VideoHome.jsx';
-import HomeMovie from './components/homeMovie/HomeMovie.jsx';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
-import HomeSeries from './components/homeSeries/HomeSeries.jsx';
-import LatestMoviesSeries from './components/latestMoviesSeries/LaestMoviesSeries.jsx';
+import Home from './components/home/Home.jsx';
+
 
 function App() {
 
   return (
     <>
+    <header>
     <Header />
-
+    </header>
+    
     <Container className='container-fluid'>
-            <VideoHome />
-            <HomeMovie />
-            <HomeSeries />
-            <LatestMoviesSeries />
+            <main id="main-content">
+              <Routes>
+                <Route path='/' element={<Home />} />
+              </Routes>
+            </main>
     </Container>
     </>
   )
