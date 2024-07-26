@@ -5,6 +5,10 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
+import { Link } from 'react-router-dom';
+
+import styles from './Header.module.css';
+
 export default function Header() {
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
@@ -12,13 +16,15 @@ export default function Header() {
         <Navbar.Brand href="#">CinemaTime</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
+          <Nav.Link className={styles['navigation-nav']}
+            // className="me-auto my-2 my-lg-0"
+            // style={{ maxHeight: '100px' }}
+            // navbarScroll
           >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Movies</Nav.Link>
+            <Link className={styles['navigation-link']} to="/">Home</Link>
+          </Nav.Link>
+          <Nav.Link className={styles['navigation-nav']}>
+            <Link className={styles['navigation-link']} to="/movies">Movies</Link>
             {/* <NavDropdown title="Link" id="navbarScrollingDropdown">
               <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action4">
@@ -29,14 +35,19 @@ export default function Header() {
                 Something else here
               </NavDropdown.Item>
             </NavDropdown> */}
-            <Nav.Link href="#">
-              Series
-            </Nav.Link>
-          </Nav>
-          <Nav>
-            <Nav.Link href="#action2">Login</Nav.Link>
-            <Nav.Link href="#action1">Register</Nav.Link>
-          </Nav>
+          </Nav.Link>
+          <Nav.Link className={styles['navigation-nav']}>
+            <Link className={styles['navigation-link']} to="/series">Series</Link>
+          </Nav.Link>
+          <Nav.Link className={styles['navigation-nav']}>
+            <Link className={styles['navigation-link']} to="/create-movies-or-series">Create movies ot series</Link>
+          </Nav.Link>
+          <Nav.Link className={styles['navigation-nav']}>
+            <Link className={styles['navigation-link']} to="/login">Login</Link>
+          </Nav.Link>
+          <Nav.Link className={styles['navigation-nav']}>
+            <Link className={styles['navigation-link']} to="/register">Register</Link>
+          </Nav.Link>
           {/* <Form className="d-flex">
             <Form.Control
               type="search"

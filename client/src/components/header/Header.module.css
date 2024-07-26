@@ -1,0 +1,13 @@
+.navigation-link {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+}
+
+.navigation-link:hover{
+    text-decoration: underline solid 1.5px;
+}
+
+.navigation-nav {
+    margin-right: 1%;
+}
