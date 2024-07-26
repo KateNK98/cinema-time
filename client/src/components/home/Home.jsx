@@ -1,7 +1,7 @@
-import VideoHome from './components/homeVideo/VideoHome.jsx';
-import HomeMovie from './components/homeMovie/HomeMovie.jsx';
-import HomeSeries from './components/homeSeries/HomeSeries.jsx';
-import LatestMoviesSeries from './components/latestMoviesSeries/LaestMoviesSeries.jsx';
+import HomeMovie from "./homeMovie/HomeMovie";
+import HomeSeries from "./homeSeries/HomeSeries";
+import VideoHome from "./homeVideo/VideoHome";
+import LatestMoviesSeries from "./latestMoviesSeries/LaestMoviesSeries";
 
 export default function Home() {
     return(
