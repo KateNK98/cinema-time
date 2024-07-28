@@ -2,6 +2,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 export default function Movies() {
+
     return(
         <div className="row">
             <div className="col">
