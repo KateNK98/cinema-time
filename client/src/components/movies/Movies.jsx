@@ -1,7 +1,16 @@
+import { useEffect, useState } from 'react';
+import * as movieAPI from '../../api/movieAPI';
+
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 export default function Movies() {
+const [movies, setMovies] = useState([]);
+
+    useEffect(() => {
+        movieAPI.getAllMovies()
+        .then(result => setMovies(result));
+    })
 
     return(
         <div className="row">
