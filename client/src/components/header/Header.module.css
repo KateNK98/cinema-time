@@ -2,12 +2,24 @@
     text-decoration: none;
     color: black;
     font-weight: 500;
+    margin-right: 5%;
+}
+
+.navigation-link-profil {
+    width: 100%;
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    margin-right: 5%;
 }
 
 .navigation-link:hover{
     text-decoration: underline solid 1.5px;
 }
 
-.navigation-nav {
-    margin-right: 1%;
+.navigation-profil {
+    display: flex;
+    flex-direction: row;
+    width: 45%;
+
 }
