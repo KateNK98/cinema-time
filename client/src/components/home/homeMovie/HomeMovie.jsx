@@ -10,7 +10,7 @@ export default function HomeMovie() {
             <div className="row">
                 <div className="col">
                     <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
+                    <Card.Img variant="top" src="#" />
                     <Card.Body>
                         <Card.Title>Card Title</Card.Title>
                         <Card.Text>

@@ -10,7 +10,7 @@ const [movies, setMovies] = useState([]);
     useEffect(() => {
         movieAPI.getAllMovies()
         .then(result => setMovies(result));
-    })
+    }, []);
 
     return(
         <div className="row">
@@ -20,7 +20,7 @@ const [movies, setMovies] = useState([]);
             <div className="row">
                 <div className="col">
                     <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="holder.js/100px180" />
+                    <Card.Img variant="top" src="" />
                     <Card.Body>
                         <Card.Title>Card Title</Card.Title>
                         <Card.Text>
