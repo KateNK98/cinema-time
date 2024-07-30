@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+
 import * as movieAPI from '../../api/movieAPI';
+
 import MoviesListItem from './movies-list-item/MoviesListItem';
 
 import styles from './MoviesList.module.css'

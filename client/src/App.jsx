@@ -9,6 +9,7 @@ import Series from './components/series/Series.jsx';
 import Login from './components/login/Login.jsx';
 import Register from './components/register/Register.jsx';
 import CreateMoviesSeries from './components/createMoviesSeries/CreateMoviesSeries.jsx';
+import MovieDetails from './components/movies-list/movies-list-item/movies-details/MovieDetails.jsx';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
               <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/movies' element={<MoviesList />} />
+                <Route path='/movies/:movieId/details' element={<MovieDetails />} />
                 <Route path='/series' element={<Series />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/register' element={<Register />} />

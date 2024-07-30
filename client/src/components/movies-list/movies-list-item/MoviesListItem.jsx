@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';    
 
@@ -18,7 +20,7 @@ export default function MoviesListItem({
                 <Card.Title className='mb-2'>{title}</Card.Title>
                 <Card.Subtitle  className='mb-4'>{genre}</Card.Subtitle>
                 <Card.Text className={styles.summary}>{summary}</Card.Text>
-                <Button variant="primary">More information</Button>
+                <Link to={`/movies/${_id}/details`}><Button variant="primary">More information</Button></Link>
             </Card.Body>
             </Card>
         </>
