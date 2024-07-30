@@ -1,0 +1,10 @@
+.list_view {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.list_view  img {
+    height: 400px;
+    width: auto;
+}
