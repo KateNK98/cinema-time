@@ -32,7 +32,10 @@ export default function MovieDetails() {
                 [newComment._id]: newComment,
             }
         }));
-    }
+
+        setUsername('');
+        setComment('');
+    };
 
     return(
         <div className="text-center mt-4">
@@ -74,11 +77,14 @@ export default function MovieDetails() {
                 </div>
                 <div className="col">
                     <ul>
-                        {movie.comments && Object.values(movie.comments).map(comment => (
-                            <li key={comment._id}>
-                                <p>{comment.username}: {comment.text}</p>
-                            </li>
-                        ))}
+                        {Object.keys(movie.comments || {}).length > 0
+                            ? Object.values(movie.comments).map(comment => (
+                                <li key={comment._id}>
+                                    <p>{comment.username}: {comment.text}</p>
+                                </li>
+                            ))
+                            : <h3>No comments.</h3>
+                        }
                     </ul>
                 </div>
             </div>
