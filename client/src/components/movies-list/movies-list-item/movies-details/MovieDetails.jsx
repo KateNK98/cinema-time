@@ -23,8 +23,15 @@ export default function MovieDetails() {
     const commentSubmitHandler = async (e) => {
         e.preventDefault();
 
-        await movieCommentsApi.create(movieId, username, comment);
+        const newComment = await movieCommentsApi.create(movieId, username, comment);
 
+        setMovie(prevState => ({
+            ...prevState,
+            comments: {
+                ...prevState.comments,
+                [newComment._id]: newComment,
+            }
+        }));
     }
 
     return(
@@ -67,22 +74,11 @@ export default function MovieDetails() {
                 </div>
                 <div className="col">
                     <ul>
-                        <li>
-                            <p>Content: I rate this one quite highly.</p>
-                        </li>
-                        <li>
-                            <p>Content: The best game.</p>
-                        </li>
-                    </ul>
-                </div>
-                <div className="col">
-                    <ul>
-                        <li>
-                            <p>Content: I rate this one quite highly.</p>
-                        </li>
-                        <li>
-                            <p>Content: The best game.</p>
-                        </li>
+                        {movie.comments && Object.values(movie.comments).map(comment => (
+                            <li key={comment._id}>
+                                <p>{comment.username}: {comment.text}</p>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
