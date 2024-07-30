@@ -15,7 +15,7 @@ export default function MoviesListItem({
     return(
         <>
             <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" className={styles.ard_img} src={imgURL} />
+            <Card.Img variant="top" className={styles.card_img} src={imgURL} />
             <Card.Body>
                 <Card.Title className='mb-2'>{title}</Card.Title>
                 <Card.Subtitle  className='mb-4'>{genre}</Card.Subtitle>

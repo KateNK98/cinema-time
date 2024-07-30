@@ -1,27 +1,30 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-export default function HomeMovie() {
+import styles from '../homeMovie/HomeMovie.module.css'
+import { Link } from 'react-router-dom';
+
+export default function HomeMovie({
+    _id,
+    title,
+    genre,
+    imgURL,
+    summary,
+}) {
+    
     return(
         <div className="row">
-            <div className="col">
-                <h2>Movie</h2>
-            </div>
-            <div className="row">
-                <div className="col">
-                    <Card style={{ width: '18rem' }}>
-                    <Card.Img variant="top" src="#" />
-                    <Card.Body>
-                        <Card.Title>Card Title</Card.Title>
-                        <Card.Text>
-                        Some quick example text to build on the card title and make up the
-                        bulk of the card's content.
-                        </Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                    </Card.Body>
-                    </Card>
+                <div className='col'>
+                <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" className={styles.card_img} src={imgURL} />
+                <Card.Body>
+                    <Card.Title className='mb-2'>{title}</Card.Title>
+                    <Card.Subtitle  className='mb-4'>{genre}</Card.Subtitle>
+                    <Card.Text className={styles.summary}>{summary}</Card.Text>
+                    <Link to={`/movies/${_id}/details`}><Button variant="primary">More information</Button></Link>
+                </Card.Body>
+                </Card>
                 </div>
-            </div>
         </div>
     )
 }
