@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react"
 import moviesAPI from "../../../../api/movieAPI";
 import { useParams } from "react-router-dom";
-import MovieComments from "./movie-comments/MovieComments";
+
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
+import movieCommentsApi from "../../../../api/movie-comments-api";
+
 
 export default function MovieDetails() {
     const [movie, setMovie] = useState({});
+    const[username, setUsername] = useState('');
+    const [comment, setComment] = useState('')
     const {movieId} = useParams();
 
     useEffect(() => {
@@ -13,6 +19,13 @@ export default function MovieDetails() {
             setMovie(result);
         })();
     }, []);
+
+    const commentSubmitHandler = async (e) => {
+        e.preventDefault();
+
+        await movieCommentsApi.create(movieId, username, comment);
+
+    }
 
     return(
         <div className="text-center mt-4">
@@ -46,8 +59,58 @@ export default function MovieDetails() {
                         </div>
                     </div>
                     <div className="text-start">
-                        <MovieComments />
-                    </div>
+                    <div className="row">
+
+
+            <div className="text-center">
+                <h2>Comments:</h2>
+                </div>
+                <div className="col">
+                    <ul>
+                        <li>
+                            <p>Content: I rate this one quite highly.</p>
+                        </li>
+                        <li>
+                            <p>Content: The best game.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div className="col">
+                    <ul>
+                        <li>
+                            <p>Content: I rate this one quite highly.</p>
+                        </li>
+                        <li>
+                            <p>Content: The best game.</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col">
+                    <p>No comments.</p>
+                </div>
+            </div>
+            <div className="row">
+                <div className="text-end">
+                    <a href="#" className="btn btn-primary">Edit</a>
+                    <a href="#" className="btn btn-primary">Delete</a>
+                </div>
+            </div>
+
+            <div>
+                <article>
+                    <label>Add new comment:</label>
+                    <Form onSubmit={commentSubmitHandler}>
+                        <Form.Group className="mb-3" controlId="formBasicEmail">
+                            <Form.Control type="text" placeholder="Ivan" name="username" onChange={(e) => setUsername(e.target.value)} value={username} />
+                            <Form.Control as="textarea" name="comment" placeholder="Comment......" onChange={(e) => setComment(e.target.value)} value={comment} rows={3} />
+                        </Form.Group>
+                        <Button variant="primary" type="submit" value="Add Comment">Submit</Button>
+                    </Form>
+                </article>
+            </div>
+                        </div>
                 </div>
             </div>
         </div>
