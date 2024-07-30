@@ -21,7 +21,10 @@ const [movies, setMovies] = useState([]);
             <div className="row">
                 <div className="col">
                     <div className={styles.list_view}>
-                    {movies.map(movie => <MoviesListItem key={movie._id} {...movie} />)}
+                        {movies.length > 0
+                            ? movies.map(movie => <MoviesListItem key={movie._id} {...movie} />)
+                            : <h3>No movies to show</h3>
+                        }
                     </div>
                 </div>
             </div>
