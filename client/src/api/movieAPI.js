@@ -9,3 +9,12 @@ export const getAllMovies = async () => {
 
     return(movies);
 };
+
+export const getOneMovie = (movieId) => request.get(`${BASE_URL}/${movieId}`);
+
+const moviesAPI = {
+    getAllMovies,
+    getOneMovie,
+};
+
+export default moviesAPI;
