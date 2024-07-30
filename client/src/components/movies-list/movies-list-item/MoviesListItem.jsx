@@ -20,7 +20,7 @@ export default function MoviesListItem({
                 <Card.Title className='mb-2'>{title}</Card.Title>
                 <Card.Subtitle  className='mb-4'>{genre}</Card.Subtitle>
                 <Card.Text className={styles.summary}>{summary}</Card.Text>
-                <Link to={`/movies/${_id}/details`}><Button variant="primary">More information</Button></Link>
+                <Link to={`/movies/${_id}/details`} className="btn btn-primary" >More information</Link>
             </Card.Body>
             </Card>
         </>

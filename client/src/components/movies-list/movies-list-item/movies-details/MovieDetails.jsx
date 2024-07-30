@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import moviesAPI from "../../../../api/movieAPI";
 import { useParams } from "react-router-dom";
+import MovieComments from "./movie-comments/MovieComments";
 
 export default function MovieDetails() {
     const [movie, setMovie] = useState({});
@@ -43,6 +44,9 @@ export default function MovieDetails() {
                             <h3>Main cast:</h3>
                             <p>{movie.main_cast}</p>
                         </div>
+                    </div>
+                    <div className="text-start">
+                        <MovieComments />
                     </div>
                 </div>
             </div>
