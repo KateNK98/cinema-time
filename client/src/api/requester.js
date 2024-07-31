@@ -1,4 +1,4 @@
-export default async function requester(method, url, data) {
+async function requester(method, url, data) {
     const options = {};
 
     if (method != 'GET') {
@@ -24,9 +24,9 @@ export const post = requester.bind(null, 'POST');
 export const put = requester.bind(null, 'PUT');
 export const del = requester.bind(null, 'DELETE');
 
-// export default {
-//     get,
-//     post,
-//     put,
-//     del,
-// };
+export default {
+    get,
+    post,
+    put,
+    del,
+};

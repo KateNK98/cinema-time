@@ -42,10 +42,17 @@ export default function() {
         </div>
 
         <div>
-            <Form.Control as="textarea" rows={3} />
-            <Button variant="primary" type="submit">
-        Submit
-      </Button>
+            <article>
+                <label>Add new comment:</label>
+                <Form onSubmit={commentSubmitHandler}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <Form.Control as="textarea" rows={3} />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">
+                     Submit
+                    </Button>
+                </Form>
+            </article>
         </div>
 
         {/* <article className="create-comment">
