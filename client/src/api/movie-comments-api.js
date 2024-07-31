@@ -14,7 +14,9 @@ const getAllMovieComments = async (movieId) => {
     return comments;
 }
 
-export default {
+const movieCommentsAPI = {
     create,
     getAllMovieComments,
 }
+
+export default movieCommentsAPI;
