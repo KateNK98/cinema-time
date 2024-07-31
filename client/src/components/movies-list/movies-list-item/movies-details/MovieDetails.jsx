@@ -1,24 +1,27 @@
-import { useEffect, useState } from "react"
-import moviesAPI from "../../../../api/movieAPI";
+// import { useEffect, useState } from "react"
+// import moviesAPI from "../../../../api/movieAPI";
+import { useState } from "react"
 import { useParams } from "react-router-dom";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import movieCommentsApi from "../../../../api/movie-comments-api";
+import { useGetOneMovies } from "../../../../hooks/useMovies";
 
 
 export default function MovieDetails() {
-    const [movie, setMovie] = useState({});
+    // const [movie, setMovie] = useState({});
+    const {movieId} = useParams();
     const[username, setUsername] = useState('');
     const [comment, setComment] = useState('')
-    const {movieId} = useParams();
+    const [movie, setMovie] = useGetOneMovies(movieId);
 
-    useEffect(() => {
-        (async () => {
-            const result = await moviesAPI.getOneMovie(movieId);
-            setMovie(result);
-        })();
-    }, []);
+    // useEffect(() => {
+    //     (async () => {
+    //         const result = await moviesAPI.getOneMovie(movieId);
+    //         setMovie(result);
+    //     })();
+    // }, []);
 
     const commentSubmitHandler = async (e) => {
         e.preventDefault();

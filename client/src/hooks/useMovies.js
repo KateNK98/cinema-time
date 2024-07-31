@@ -12,3 +12,20 @@ export function useGetAllMovies() {
 
     return [movies, setMovies]
 }
+
+export function useGetOneMovies(movieId) {
+    const [movie, setMovie] = useState({});
+
+    useEffect(() => {
+        (async () => {
+            const result = await moviesAPI.getOneMovie(movieId);
+            setMovie(result);
+        })();
+    }, [movieId]);
+
+    return [
+        movie,
+        setMovie,
+    ];
+
+}
