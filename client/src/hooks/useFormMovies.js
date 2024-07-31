@@ -7,10 +7,10 @@ export function useFormMovies(initialValues, submitCallback) {
         setValues(state => ({
             ...state,
             [e.target.name]: e.target.value
-        }));
+        }))
     };
 
-    const submitHandler = () => {
+    const submitHandler = (e) => {
         e.preventDefault();
 
         submitCallback(values);
