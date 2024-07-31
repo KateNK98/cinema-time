@@ -1,18 +1,21 @@
-import { useEffect, useState } from 'react';
+// import { useEffect, useState } from 'react';
 
-import * as movieAPI from '../../api/movieAPI';
+// import movieAPI from '../../api/movieAPI';
 
+import { useGetAllMovies } from '../../hooks/useMovies';
 import MoviesListItem from './movies-list-item/MoviesListItem';
 
 import styles from './MoviesList.module.css'
 
 export default function MoviesList() {
-const [movies, setMovies] = useState([]);
+    const [movies] = useGetAllMovies();
+    
+// const [movies, setMovies] = useState([]);
 
-    useEffect(() => {
-        movieAPI.getAllMovies()
-        .then(result => setMovies(result));
-    }, []);
+//     useEffect(() => {
+//         movieAPI.getAllMovies()
+//         .then(result => setMovies(result));
+//     }, []);
 
     return(
         <div className="row  className='mb-3'">
