@@ -10,30 +10,44 @@ import Login from './components/login/Login.jsx';
 import Register from './components/register/Register.jsx';
 import CreateMoviesSeries from './components/createMoviesSeries/CreateMoviesSeries.jsx';
 import MovieDetails from './components/movies-list/movies-list-item/movies-details/MovieDetails.jsx';
+import { useState } from 'react';
+import { AuthContext } from './contexts/AuthContext.js';
 
 
 function App() {
+  const [authState, setAuthState] = useState({});
+
+  const changeAuthState = (state) => {
+    setAuthState(state);
+  };
+
+  const contextData = {
+    email: authState.email,
+    accessToken: authState.accessToken,
+    isAuthenticated: !!authState.email,
+    changeAuthState,
+  };
 
   return (
-    <>
-    <header>
-    <Header />
-    </header>
-    
-    <Container className='container-fluid'>
-            <main id="main-content">
-              <Routes>
-                <Route path='/' element={<Home />} />
-                <Route path='/movies' element={<MoviesList />} />
-                <Route path='/movies/:movieId/details' element={<MovieDetails />} />
-                <Route path='/series' element={<Series />} />
-                <Route path='/login' element={<Login />} />
-                <Route path='/register' element={<Register />} />
-                <Route path='/create-movies-or-series' element={<CreateMoviesSeries />} />
-              </Routes>
-            </main>
-    </Container>
-    </>
+    <AuthContext.Provider value={contextData}>
+      <header>
+      <Header />
+      </header>
+      
+      <Container className='container-fluid'>
+              <main id="main-content">
+                <Routes>
+                  <Route path='/' element={<Home />} />
+                  <Route path='/movies' element={<MoviesList />} />
+                  <Route path='/movies/:movieId/details' element={<MovieDetails />} />
+                  <Route path='/series' element={<Series />} />
+                  <Route path='/login' element={<Login />} />
+                  <Route path='/register' element={<Register />} />
+                  <Route path='/create-movies-or-series' element={<CreateMoviesSeries />} />
+                </Routes>
+              </main>
+      </Container>
+    </AuthContext.Provider>
   )
 }
 

@@ -4,21 +4,31 @@ import { useFormMovies } from '../../hooks/useFormMovies';
 import { useLogin } from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
+const initialValues = {email: '', password: ''};
+
 export default function Login() {
   const login = useLogin();
   const navigate = useNavigate();
-  const {values, changeHandler, submitHandler} = useFormMovies(
-    {email: '', password: ''}, 
-    async ({email, password}) => {
-      try {
-        await login(email, password)
-        navigate('/');
-      } catch (err) {
-        console.log(err.message);
-      }
-      
+  
+  const loginHandler = async ({email, password}) => {
+    try {
+      await login(email, password)
+      navigate('/');
+    } catch (err) {
+      console.log(err.message);
     }
-  );
+  };
+
+  const {
+    values,
+    changeHandler,
+    submitHandler,
+  } = useFormMovies(initialValues, loginHandler);
+
+//   const {values, changeHandler, submitHandler} = useFormMovies(
+//     initialValues, 
+//     loginHandler,
+//   );
 
   return (
     <Form onSubmit={submitHandler}>
