@@ -6,8 +6,12 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 
 import styles from './Header.module.css';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export default function Header() {
+  const {isAuthenticated, email} = useContext(AuthContext);
+
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
@@ -33,14 +37,16 @@ export default function Header() {
             </NavDropdown> */}
           </Nav>
           <Nav>
-            <div id='user'  className={styles['navigation-profil']}>
-                    <Link className={styles['navigation-link-profil']} to="/create-movies-or-series">Create movies ot series</Link>
-                    <Link className={styles['navigation-link']} to="/logout">Logout</Link>
-                </div>
-                <div id='guest'  className={styles['navigation-profil']}>
-                    <Link className={styles['navigation-link']} to="/login">Login</Link>
-                    <Link className={styles['navigation-link']} to="/register">Register</Link>
-                </div>
+            {isAuthenticated
+              ? (<div id='user'  className={styles['navigation-profil']}>
+                  <Link className={styles['navigation-link-profil']} to="/create-movies-or-series">Create movies ot series</Link>
+                  <Link className={styles['navigation-link']} to="/logout">Logout</Link>
+                </div>)
+              : (<div id='guest'  className={styles['navigation-profil']}>
+                  <Link className={styles['navigation-link']} to="/login">Login</Link>
+                  <Link className={styles['navigation-link']} to="/register">Register</Link>
+                </div>) 
+            };
             {/* <Nav.Link href="#deets">More deets</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
               Dank memes
