@@ -29,3 +29,9 @@ export function useGetOneMovies(movieId) {
     ];
 
 }
+
+export function useCreateMovie(movieData) {
+    const movieCreateHandler = (movieData) => moviesAPI.create(movieData);
+
+    return movieCreateHandler;
+}

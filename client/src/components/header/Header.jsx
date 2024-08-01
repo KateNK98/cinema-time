@@ -39,7 +39,8 @@ export default function Header() {
           <Nav>
             {isAuthenticated
               ? (<div id='user'  className={styles['navigation-profil']}>
-                  <Link className={styles['navigation-link-profil']} to="/create-movies-or-series">Create movies ot series</Link>
+                  <Link className={styles['navigation-link-profil']} to="/movies/create">Create movies</Link>
+                  <Link className={styles['navigation-link-profil']} to="/series/create">Create series</Link>
                   <Link className={styles['navigation-link']} to="/logout">Logout</Link>
                 </div>)
               : (<div id='guest'  className={styles['navigation-profil']}>

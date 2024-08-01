@@ -8,10 +8,11 @@ import MoviesList from './components/movies-list/MoviesList.jsx';
 import Series from './components/series/Series.jsx';
 import Login from './components/login/Login.jsx';
 import Register from './components/register/Register.jsx';
-import CreateMoviesSeries from './components/createMoviesSeries/CreateMoviesSeries.jsx';
+import CreateMovies from './components/create-movies/CreateMovies.jsx';
 import MovieDetails from './components/movies-list/movies-list-item/movies-details/MovieDetails.jsx';
 import { useState } from 'react';
 import { AuthContext } from './contexts/AuthContext.js';
+import CreateSeries from './components/create-series/CreateSeries.jsx';
 
 
 function App() {
@@ -44,7 +45,8 @@ function App() {
                   <Route path='/series' element={<Series />} />
                   <Route path='/login' element={<Login />} />
                   <Route path='/register' element={<Register />} />
-                  <Route path='/create-movies-or-series' element={<CreateMoviesSeries />} />
+                  <Route path='/movies/create' element={<CreateMovies />} />
+                  <Route path='/series/create' element={<CreateSeries />} />
                 </Routes>
               </main>
       </Container>
