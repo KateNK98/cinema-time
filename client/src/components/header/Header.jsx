@@ -6,11 +6,10 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from 'react-router-dom';
 
 import styles from './Header.module.css';
-import { useContext } from 'react';
-import { AuthContext } from '../../contexts/AuthContext';
+import { useAuthContext } from '../../contexts/AuthContext';
 
 export default function Header() {
-  const {isAuthenticated, email} = useContext(AuthContext);
+  const {isAuthenticated} = useAuthContext();
 
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
