@@ -12,6 +12,7 @@ import CreateMovies from './components/create-movies/CreateMovies.jsx';
 import MovieDetails from './components/movies-list/movies-list-item/movies-details/MovieDetails.jsx';
 import { AuthContextProvider } from './contexts/AuthContext.jsx';
 import CreateSeries from './components/create-series/CreateSeries.jsx';
+import Logout from './components/logout/Logout.jsx';
 
 
 function App() {
@@ -33,6 +34,7 @@ function App() {
                   <Route path='/register' element={<Register />} />
                   <Route path='/movies/create' element={<CreateMovies />} />
                   <Route path='/series/create' element={<CreateSeries />} />
+                  <Route path='/logout' element={<Logout />} />
                 </Routes>
               </main>
       </Container>

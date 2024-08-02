@@ -20,9 +20,9 @@ export default function usePersistedSate(key, initialState) {
         ? value(state)
         : value;
 
-        localStorage.setItem(key, JSON.stringify(value));
+        localStorage.setItem(key, JSON.stringify(newState));
 
-        setSate(value);
+        setSate(newState);
     }
 
     return [state, updateState];
