@@ -10,7 +10,7 @@ import Login from './components/login/Login.jsx';
 import Register from './components/register/Register.jsx';
 import CreateMovies from './components/create-movies/CreateMovies.jsx';
 import MovieDetails from './components/movies-list/movies-list-item/movies-details/MovieDetails.jsx';
-import { AuthContextProvider } from './contexts/AuthContext.js';
+import { AuthContextProvider } from './contexts/AuthContext.jsx';
 import CreateSeries from './components/create-series/CreateSeries.jsx';
 
 
