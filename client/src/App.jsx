@@ -10,30 +10,14 @@ import Login from './components/login/Login.jsx';
 import Register from './components/register/Register.jsx';
 import CreateMovies from './components/create-movies/CreateMovies.jsx';
 import MovieDetails from './components/movies-list/movies-list-item/movies-details/MovieDetails.jsx';
-import { useState } from 'react';
-import { AuthContext } from './contexts/AuthContext.js';
+import { AuthContextProvider } from './contexts/AuthContext.js';
 import CreateSeries from './components/create-series/CreateSeries.jsx';
 
 
 function App() {
-  const [authState, setAuthState] = useState({});
-
-  const changeAuthState = (state) => {
-    localStorage.set('accesToken', state.accessToken);
-
-    setAuthState(state);
-  };
-
-  const contextData = {
-    userId: authState._id,
-    email: authState.email,
-    accessToken: authState.accessToken,
-    isAuthenticated: !!authState.email,
-    changeAuthState,
-  };
 
   return (
-    <AuthContext.Provider value={contextData}>
+    <AuthContextProvider>
       <header>
       <Header />
       </header>
@@ -52,7 +36,7 @@ function App() {
                 </Routes>
               </main>
       </Container>
-    </AuthContext.Provider>
+    </AuthContextProvider>
   )
 }
 
