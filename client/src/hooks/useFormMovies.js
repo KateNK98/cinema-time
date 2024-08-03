@@ -14,6 +14,8 @@ export function useFormMovies(initialValues, submitCallback) {
         e.preventDefault();
 
         submitCallback(values);
+
+        setValues(initialValues);
     };
 
     return {
