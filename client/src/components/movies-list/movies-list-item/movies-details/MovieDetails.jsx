@@ -64,7 +64,7 @@ export default function MovieDetails() {
                         </div>
                         <div className="col">
                             <h3>Writing by:</h3>
-                            <p>{movie.Writers}</p>
+                            <p>{movie.writers}</p>
                         </div>
                         <div className="col">
                             <h3>Main cast:</h3>

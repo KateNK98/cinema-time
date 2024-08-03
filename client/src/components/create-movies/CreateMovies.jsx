@@ -13,7 +13,7 @@ const initialValues = {
     summary: '',
     imgURL: '',
     director: '',
-    Writers: '',
+    writers: '',
     main_cast: '',
 };
 
@@ -25,7 +25,7 @@ export default function CreateMovies() {
     const createHandler = async (values) => {
         try {
             const {_id: movieId} = await createMovie(values);
-            navigate(`/cinema/movies/${movieId}/details`);
+            navigate(`/movies/${movieId}/details`);
         } catch (err) {
             console.log(err.message);
         }
@@ -57,7 +57,7 @@ export default function CreateMovies() {
                 <Form.Label>Directed by:</Form.Label>
                 <Form.Control type="text" name="director" value={values.director} onChange={changeHandler} placeholder="Jon Favreau, ..." />
                 <Form.Label>Writing by:</Form.Label>
-                <Form.Control type="text" name="Writers" value={values.Writers} onChange={changeHandler} placeholder="Mark Fergus, ..." />
+                <Form.Control type="text" name="writers" value={values.writers} onChange={changeHandler} placeholder="Mark Fergus, ..." />
                 <Form.Label>Main cast:</Form.Label>
                 <Form.Control type="text" name="main_cast" value={values.main_cast} onChange={changeHandler} placeholder="Robert Downey Jr., ..." />
             </Form.Group>

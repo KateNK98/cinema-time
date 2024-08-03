@@ -30,7 +30,7 @@ export function useGetOneMovies(movieId) {
 
 }
 
-export function useCreateMovie(movieData) {
+export function useCreateMovie() {
     const movieCreateHandler = (movieData) => moviesAPI.create(movieData);
 
     return movieCreateHandler;

@@ -17,10 +17,14 @@ export default function usePersistedSate(key, initialState) {
 
     const updateState = (value) => {
         const newState = typeof value === 'function'
-        ? value(state)
-        : value;
+            ? value(state)
+            : value;
 
-        localStorage.setItem(key, JSON.stringify(newState));
+        if (newState === null || newState === undefined) {
+            localStorage.removeItem(key);
+        } else {
+            localStorage.setItem(key, JSON.stringify(newState));
+        }
 
         setSate(newState);
     }

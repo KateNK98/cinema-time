@@ -1,14 +1,15 @@
-import { getAccessToken } from "../utils/authutils";
+import { getAccessToken } from "../utils/authUtils";
+
 
 async function requester(method, url, data) {
     const options = {};
 
-    const accesToken = getAccessToken();
+    const accessToken = getAccessToken();
 
-    if (accesToken) {
+    if (accessToken) {
         options.headers = {
             ...options.headers,
-            'X-Authorization': accesToken,
+            'X-Authorization': accessToken,
         }
     }
 
