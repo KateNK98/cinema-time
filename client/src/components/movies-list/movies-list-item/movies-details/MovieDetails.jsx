@@ -15,6 +15,7 @@ export default function MovieDetails() {
     const {movieId} = useParams();
     const [comments, setComments] = useGetAllCommentsMovie(movieId);
     const createComment = useCreateCommentMovie();
+    const {userId} = useAuthContext();
     const [movie] = useGetOneMovies(movieId);
     const {isAuthenticated} = useAuthContext();
     const {
@@ -30,6 +31,8 @@ export default function MovieDetails() {
             console.log(err.message);
         }
     });
+
+    const isOwner = userId === movie._ownerId;
 
     return(
         <div className="text-center mt-4">
@@ -86,12 +89,14 @@ export default function MovieDetails() {
                     <p>No comments.</p>
                 </div>
             </div>
-            <div className="row">
-                <div className="text-end">
-                    <a href="#" className="btn btn-primary">Edit</a>
-                    <a href="#" className="btn btn-primary">Delete</a>
+            {isOwner && (
+                <div className="row">
+                    <div className="text-end">
+                        <a href="#" className="btn btn-primary">Edit</a>
+                        <a href="#" className="btn btn-primary">Delete</a>
+                    </div>
                 </div>
-            </div>
+            )};
 
             <div>
                 {isAuthenticated && (

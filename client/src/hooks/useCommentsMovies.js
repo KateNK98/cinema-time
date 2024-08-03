@@ -13,7 +13,7 @@ export function useGetAllCommentsMovie(movieId) {
     useEffect(() => {
         (async () => {
             const result = await movieCommentsAPI.getAllMovieComments(movieId);
-            console.log(result)
+
             setComments(result);
         })()
     }, [movieId]);
