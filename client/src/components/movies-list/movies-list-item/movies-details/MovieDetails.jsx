@@ -73,7 +73,7 @@ export default function MovieDetails() {
                     <ul>
                         {comments.map(comment => (
                                 <li key={comment._id}>
-                                    <p>Username: {comment.text}</p>
+                                    <p>{comment.author.email}: {comment.text}</p>
                                 </li>
                             ))
                         }

@@ -7,7 +7,8 @@ const create = (movieId, text) => requester.post(BASE_URL, {movieId, text});
 // const getAllMovieComments = async (movieId) => await requester.get(BASE_URL);
 const getAllMovieComments = (movieId) => {
     const params = new URLSearchParams({
-        where: `movieId="${movieId}"`
+        where: `movieId="${movieId}"`,
+        load: `author=_ownerId:users`
     });
     return requester.get(`${BASE_URL}?${params.toString()}`);
 }
