@@ -21,8 +21,14 @@ export default function MovieDetails() {
         changeHandler,
         submitHandler,
         values,
-    } = useFormMovies(initialValues, ({comment}) => {
-        createComment(movieId, comment);
+    } = useFormMovies(initialValues, async ({comment}) => {
+        try {
+            const newComment = await createComment(movieId, comment);
+
+            setComments(oldComments => [...oldComments, newComment]);
+        } catch (err) {
+            console.log(err.message);
+        }
     });
 
     return(
