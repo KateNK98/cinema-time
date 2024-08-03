@@ -1,17 +1,15 @@
-import * as request from "./requester"
+import requester from "./requester"
 
-const BASE_URL = 'http://localhost:3030/jsonstore/cinema/movies/';
+const BASE_URL = 'http://localhost:3030/data/comments-movie';
 
-const buildUrl = (movieId) => `${BASE_URL}/${movieId}/comments`;
+const create = (movieId, text) => requester.post(BASE_URL, {movieId, text});
 
-const create = (movieId, username, text) => request.post(buildUrl(movieId), {username, text});
-
-const getAllMovieComments = async (movieId) => {
-    const result = await request.get(buildUrl(movieId));
-
-    const comments = Object.values(result);
-
-    return comments;
+// const getAllMovieComments = async (movieId) => await requester.get(BASE_URL);
+const getAllMovieComments = (movieId) => {
+    const params = new URLSearchParams({
+        where: `movieId="${movieId}"`
+    });
+    return requester.get(`${BASE_URL}?${params.toString()}`);
 }
 
 const movieCommentsAPI = {

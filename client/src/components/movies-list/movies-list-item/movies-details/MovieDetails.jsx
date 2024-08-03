@@ -1,44 +1,29 @@
-// import { useEffect, useState } from "react"
-// import moviesAPI from "../../../../api/movieAPI";
-import { useState } from "react"
 import { useParams } from "react-router-dom";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import movieCommentsApi from "../../../../api/movie-comments-api";
 import { useGetOneMovies } from "../../../../hooks/useMovies";
+import { useFormMovies } from "../../../../hooks/useFormMovies";
+import { useGetAllCommentsMovie, useCreateCommentMovie } from "../../../../hooks/useCommentsMovies";
+import { useAuthContext } from "../../../../contexts/AuthContext";
 
+const initialValues = {
+    comment: '',
+}
 
 export default function MovieDetails() {
-    // const [movie, setMovie] = useState({});
     const {movieId} = useParams();
-    const[username, setUsername] = useState('');
-    const [comment, setComment] = useState('')
-    const [movie, setMovie] = useGetOneMovies(movieId);
-
-    // useEffect(() => {
-    //     (async () => {
-    //         const result = await moviesAPI.getOneMovie(movieId);
-    //         setMovie(result);
-    //     })();
-    // }, []);
-
-    const commentSubmitHandler = async (e) => {
-        e.preventDefault();
-
-        const newComment = await movieCommentsApi.create(movieId, username, comment);
-
-        setMovie(prevState => ({
-            ...prevState,
-            comments: {
-                ...prevState.comments,
-                [newComment._id]: newComment,
-            }
-        }));
-
-        setUsername('');
-        setComment('');
-    };
+    const [comments, setComments] = useGetAllCommentsMovie(movieId);
+    const createComment = useCreateCommentMovie();
+    const [movie] = useGetOneMovies(movieId);
+    const {isAuthenticated} = useAuthContext();
+    const {
+        changeHandler,
+        submitHandler,
+        values,
+    } = useFormMovies(initialValues, ({comment}) => {
+        createComment(movieId, comment);
+    });
 
     return(
         <div className="text-center mt-4">
@@ -80,15 +65,14 @@ export default function MovieDetails() {
                 </div>
                 <div className="col">
                     <ul>
-                        {Object.keys(movie.comments || {}).length > 0
-                            ? Object.values(movie.comments).map(comment => (
+                        {comments.map(comment => (
                                 <li key={comment._id}>
-                                    <p>{comment.username}: {comment.text}</p>
+                                    <p>Username: {comment.text}</p>
                                 </li>
                             ))
-                            : <h3>No comments.</h3>
                         }
                     </ul>
+                    {comments.length === 0 && <h3>No comments.</h3>}
                 </div>
             </div>
             <div className="row">
@@ -104,16 +88,17 @@ export default function MovieDetails() {
             </div>
 
             <div>
-                <article>
-                    <label>Add new comment:</label>
-                    <Form onSubmit={commentSubmitHandler}>
-                        <Form.Group className="mb-3" controlId="formBasicEmail">
-                            <Form.Control type="text" placeholder="Ivan" name="username" onChange={(e) => setUsername(e.target.value)} value={username} />
-                            <Form.Control as="textarea" name="comment" placeholder="Comment......" onChange={(e) => setComment(e.target.value)} value={comment} rows={3} />
-                        </Form.Group>
-                        <Button variant="primary" type="submit" value="Add Comment">Submit</Button>
-                    </Form>
-                </article>
+                {isAuthenticated && (
+                    <article>
+                        <label>Add new comment:</label>
+                        <Form onSubmit={submitHandler}>
+                            <Form.Group className="mb-3" controlId="formBasicEmail">
+                                <Form.Control as="textarea" name="comment" placeholder="Comment......" onChange={changeHandler} value={values.comment} rows={3} />
+                            </Form.Group>
+                            <Button variant="primary" type="submit" value="Add Comment">Submit</Button>
+                        </Form>
+                    </article>
+                )}
             </div>
                         </div>
                 </div>
