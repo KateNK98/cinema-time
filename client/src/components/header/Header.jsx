@@ -8,11 +8,14 @@ import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import { useAuthContext } from '../../contexts/AuthContext';
 
+import background_8 from '../../../public/images/background_8.png'
+import '../../main.css'
+
 export default function Header() {
   const {isAuthenticated} = useAuthContext();
 
   return (
-    <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary">
+    <Navbar id="navbar"  style={{ backgroundImage: `url(${background_8})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} collapseOnSelect expand="lg" className="bg-body-tertiary">
       <Container>
         <Navbar.Brand>CinemaTime</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />

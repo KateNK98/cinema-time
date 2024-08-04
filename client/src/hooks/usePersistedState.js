@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function usePersistedSate(key, initialState) {
-    const [state, setSate] = useState(() => {
+    const [state, setState] = useState(() => {
         const persistedAuth = localStorage.getItem(key);
 
         if (!persistedAuth) {
@@ -26,7 +26,7 @@ export default function usePersistedSate(key, initialState) {
             localStorage.setItem(key, JSON.stringify(newState));
         }
 
-        setSate(newState);
+        setState(newState);
     }
 
     return [state, updateState];

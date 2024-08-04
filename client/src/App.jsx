@@ -16,7 +16,7 @@ import Logout from './components/logout/Logout.jsx';
 import EditMovies from './components/edit-movies/EditMovies.jsx';
 import EditSeries from './components/edit-series/EditSeries.jsx';
 import Athenticated from './components/common/route-guard/Authenticated.jsx';
-
+import background_7 from "../public/images/background_7.png";
 
 function App() {
 
@@ -26,8 +26,8 @@ function App() {
       <Header />
       </header>
       
-      <Container className='container-fluid'>
-              <main id="main-content">
+      <Container fluid className='container-fluid' style={{ backgroundImage: `url(${background_7})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+              <main id="main-content" className='p-5'>
                 <Routes>
                   <Route path='/' element={<Home />} />
                   <Route path='/movies' element={<MoviesList />} />

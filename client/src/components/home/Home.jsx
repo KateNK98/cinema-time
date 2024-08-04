@@ -20,9 +20,9 @@ export default function Home() {
     return(
         <>
             <VideoHome />
-            <div className="row">
+            <div className="row mt-5 mb-5">
                 <div className="col">
-                    <h2>Movie</h2>
+                    <h2>Latest movies</h2>
                     <div className={styles.list_view}>
                     {latestMovies.length > 0
                 ? latestMovies.map(movie => <LatestMovie key={movie._id} {...movie} />)

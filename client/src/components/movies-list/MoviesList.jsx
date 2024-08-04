@@ -18,12 +18,12 @@ export default function MoviesList() {
 //     }, []);
 
     return(
-        <div className="row  className='mb-3'">
-            <div className="col-12">
-                <h2>Movie</h2>
+        <div className="row mb-3">
+            <div className="col-12 mt-3  text-center">
+                <h2>Movies</h2>
             </div>
 
-            <div className="row">
+            <div className="row mt-4">
                 <div className="col">
                     <div className={styles.list_view}>
                         {movies.length > 0

@@ -1339,9 +1339,8 @@
     	}
     };
     var seedData = {
-        // cinema: {
             movies: {
-                "0717639e-ddbe-4934-a4c5-de268be38bcc": {
+                "e274d8d8-d73b-4e07-b8fa-5fa389db18c4": {
                     "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                     "title": "Elemental",
                     "genre": "Animation, Adventure, Comedy",
@@ -1352,10 +1351,10 @@
                     "director": "Peter Sohn",
                     "writers": "John Hoberg, Kat Likkel, Brenda Hsueh, Peter Sohn, John Hoberg, Kat Likkel, Brenda Hsueh",
                     "main_cast": "Leah Lewis, Mamoudou Athie, Ronnie Del Carmen, Shila Ommi, Wendi McLendon-Covey, Catherine O'Hara",
-                    "_createdOn": 1722668523724,
-                    "_id": "0717639e-ddbe-4934-a4c5-de268be38bcc"
+                    "_createdOn": 1722805909764,
+                    "_id": "e274d8d8-d73b-4e07-b8fa-5fa389db18c4"
                 },
-                "cb5c64a6-85ee-417e-afe3-4d8645daa17a": {
+                "c04b8827-d0f6-47a0-9311-8ba544801fd7": {
                     "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                     "title": "Deadpool & Wolverine",
                     "genre": "Action, Adventure, Comedy",
@@ -1366,10 +1365,10 @@
                     "director": "Shawn Levy",
                     "writers": "Ryan Reynolds, Rhett Reese, Paul Wernick, Zeb Wells, Shawn Levy, Rob Liefeld, Fabian Nicieza",
                     "main_cast": "Ryan Reynolds, Hugh Jackman, Emma Corrin, Matthew Macfadyen, Dafne Keen, Jon Favreau",
-                    "_createdOn": 1722668679478,
-                    "_id": "cb5c64a6-85ee-417e-afe3-4d8645daa17a"
+                    "_createdOn": 1722805942500,
+                    "_id": "c04b8827-d0f6-47a0-9311-8ba544801fd7"
                 },
-                "314d7f93-eac2-448b-983d-72e495acb65e": {
+                "4b6c6579-29df-46aa-a2a1-cf6a8af131d8": {
                     "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                     "title": "Avatar: The Way of Water",
                     "genre": "Action, Adventure, Fantasy",
@@ -1380,10 +1379,10 @@
                     "director": "James Cameron",
                     "writers": "James Cameron, Rick Jaffa, Amanda Silver, James Cameron, Rick Jaffa, Amanda Silver, Josh Friedman, Shane Salerno, James Cameron",
                     "main_cast": "Sam Worthington, Zoe Saldana, Sigourney Weaver, Stephen Lang, Kate Winslet, Cliff Curtis",
-                    "_createdOn": 1722668716403,
-                    "_id": "314d7f93-eac2-448b-983d-72e495acb65e"
+                    "_createdOn": 1722805975992,
+                    "_id": "4b6c6579-29df-46aa-a2a1-cf6a8af131d8"
                 },
-                "9c04cc5c-ccfe-460e-abdf-08c35e13c3b9": {
+                "5c653408-d0a9-4047-bbc2-6554ec56bd56": {
                     "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
                     "title": "Inside Out 2",
                     "genre": "Animation, Adventure, Comedy",
@@ -1394,8 +1393,8 @@
                     "director": "Kelsey Mann",
                     "writers": "Meg LeFauve, Dave Holstein, Kelsey Mann, Meg LeFauve",
                     "main_cast": "Amy Poehler, Maya Hawke, Kensington Tallman, Liza Lapira, Tony Hale, Lewis Black, Phyllis Smith, Ayo Edebiri",
-                    "_createdOn": 1722668754955,
-                    "_id": "9c04cc5c-ccfe-460e-abdf-08c35e13c3b9"
+                    "_createdOn": 1722806008720,
+                    "_id": "5c653408-d0a9-4047-bbc2-6554ec56bd56"
                 }
             },
             series: {
@@ -1456,7 +1455,6 @@
                     "_id": "fb5e0014-4889-4bf3-9928-39c2e37361b4"
                 }
             }
-        // }
     	
     };
     var rules$1 = {
