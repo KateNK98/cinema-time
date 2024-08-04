@@ -15,6 +15,7 @@ import CreateSeries from './components/create-series/CreateSeries.jsx';
 import Logout from './components/logout/Logout.jsx';
 import EditMovies from './components/edit-movies/EditMovies.jsx';
 import EditSeries from './components/edit-series/EditSeries.jsx';
+import Athenticated from './components/common/route-guard/Authenticated.jsx';
 
 
 function App() {
@@ -34,11 +35,14 @@ function App() {
                   <Route path='/series' element={<Series />} />
                   <Route path='/login' element={<Login />} />
                   <Route path='/register' element={<Register />} />
-                  <Route path='/movies/create' element={<CreateMovies />} />
-                  <Route path='/movies/:movieId/edit' element={<EditMovies />} />
-                  <Route path='/series/create' element={<CreateSeries />} />
-                  {/* <Route path='/series/edit' element={<EditSeries />} /> */}
-                  <Route path='/logout' element={<Logout />} />
+                  {/* <Route path='/movies/create' element={<Athenticated><CreateMovies /></Athenticated>} /> */}
+                  <Route element={<Athenticated />}>
+                    <Route path='/movies/create' element={<CreateMovies />} />
+                    <Route path='/movies/:movieId/edit' element={<EditMovies />} />
+                    <Route path='/series/create' element={<CreateSeries />} />
+                    {/* <Route path='/series/edit' element={<EditSeries />} /> */}
+                    <Route path='/logout' element={<Logout />} />
+                  </Route>
                 </Routes>
               </main>
       </Container>
