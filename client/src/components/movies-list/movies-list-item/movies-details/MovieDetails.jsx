@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -6,12 +6,14 @@ import { useGetOneMovies } from "../../../../hooks/useMovies";
 import { useFormMovies } from "../../../../hooks/useFormMovies";
 import { useGetAllCommentsMovie, useCreateCommentMovie } from "../../../../hooks/useCommentsMovies";
 import { useAuthContext } from "../../../../contexts/AuthContext";
+import moviesAPI from "../../../../api/moviesAPI";
 
 const initialValues = {
-    comment: '',
+    comment: ''
 }
 
 export default function MovieDetails() {
+    const navigate = useNavigate();
     const {movieId} = useParams();
     const [comments, setComments] = useGetAllCommentsMovie(movieId);
     const createComment = useCreateCommentMovie();
@@ -31,6 +33,16 @@ export default function MovieDetails() {
             console.log(err.message);
         }
     });
+
+    const movieDeleteHandler = async () => {
+        try {
+            await moviesAPI.remove(movieId);
+
+            navigate('/movies')
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
 
     const isOwner = userId === movie._ownerId;
 
@@ -84,19 +96,14 @@ export default function MovieDetails() {
                     {comments.length === 0 && <h3>No comments.</h3>}
                 </div>
             </div>
-            <div className="row">
-                <div className="col">
-                    <p>No comments.</p>
-                </div>
-            </div>
             {isOwner && (
                 <div className="row">
                     <div className="text-end">
                         <a href="#" className="btn btn-primary">Edit</a>
-                        <a href="#" className="btn btn-primary">Delete</a>
+                        <a href="#" onClick={movieDeleteHandler} className="btn btn-primary">Delete</a>
                     </div>
                 </div>
-            )};
+            )}
 
             <div>
                 {isAuthenticated && (

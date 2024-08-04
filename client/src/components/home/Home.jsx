@@ -3,7 +3,7 @@ import HomeMovie from "./homeMovie/HomeMovie";
 import HomeSeries from "./homeSeries/HomeSeries";
 import VideoHome from "./homeVideo/VideoHome";
 import LatestMoviesSeries from "./latestMoviesSeries/LaestMoviesSeries";
-import moviesAPI from "../../api/movieAPI";
+import moviesAPI from "../../api/moviesAPI";
 
 import styles from '../home/Home.module.css'
 
