@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react";
-import HomeMovie from "./homeMovie/HomeMovie";
+import LatestMovie from "./latest-movie/LatestMovie";
 import HomeSeries from "./homeSeries/HomeSeries";
 import VideoHome from "./homeVideo/VideoHome";
-import LatestMoviesSeries from "./latestMoviesSeries/LaestMoviesSeries";
 import moviesAPI from "../../api/moviesAPI";
 
 import styles from '../home/Home.module.css'
 
 export default function Home() {
-    const [showMovies, setShowMovies] = useState([]);
+    const [latestMovies, setLatestMovies] = useState([]);
 
     useEffect (() => {
         (async () => {
-            const resultMovies = await moviesAPI.getAllMovies();
+            const resultMovies = await moviesAPI.getLatestMovies();
 
-            setShowMovies(resultMovies.reverse().slice(0, 4));
+            setLatestMovies(resultMovies);
         })();
     }, []);
 
@@ -25,15 +24,14 @@ export default function Home() {
                 <div className="col">
                     <h2>Movie</h2>
                     <div className={styles.list_view}>
-                    {showMovies.length > 0
-                ? showMovies.map(movie => <HomeMovie key={movie._id} {...movie} />)
+                    {latestMovies.length > 0
+                ? latestMovies.map(movie => <LatestMovie key={movie._id} {...movie} />)
                 : <p>No movies to show</p>
             }
                     </div>
                 </div>
             </div>
             <HomeSeries />
-            <LatestMoviesSeries />
         </>
     )
 }

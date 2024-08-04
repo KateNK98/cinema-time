@@ -1,10 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-import styles from '../homeMovie/HomeMovie.module.css'
+import styles from './LatestMovie.module.css'
 import { Link } from 'react-router-dom';
 
-export default function HomeMovie({
+export default function LatestMovie({
     _id,
     title,
     genre,
