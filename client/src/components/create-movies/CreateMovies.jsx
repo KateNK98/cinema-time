@@ -45,7 +45,7 @@ export default function CreateMovies() {
                 <Form.Label>Title:</Form.Label>
                 <Form.Control type="text" name="title" value={values.title} onChange={changeHandler} placeholder="Iron man" />
                 <Form.Label>Movie poster:</Form.Label>
-                <Form.Control type="file" name="imgURL" value={values.imgURL} onChange={changeHandler} />
+                <Form.Control type="text" name="imgURL" value={values.imgURL} onChange={changeHandler} placeholder="https://site.com/image.png" />
                 <Form.Label>Year:</Form.Label>
                 <Form.Control type="number" name="year" value={values.year} onChange={changeHandler} placeholder="2008" />
                 <Form.Label>Genre:</Form.Label>

@@ -15,11 +15,14 @@ export const create = (movieData) => request.post(`${BASE_URL}`, movieData)
 
 export const remove = (movieId) => request.del(`${BASE_URL}/${movieId}`);
 
+export const update = (movieId, movieData) => request.put(`${BASE_URL}/${movieId}`, movieData)
+
 const moviesAPI = {
     getAllMovies,
     getOneMovie,
     create,
     remove,
+    update,
 };
 
 export default moviesAPI;

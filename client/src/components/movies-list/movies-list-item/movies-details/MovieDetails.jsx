@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -35,6 +35,11 @@ export default function MovieDetails() {
     });
 
     const movieDeleteHandler = async () => {
+        const isConfirmed = confirm(`Are you sure you want to delete "${movie.title}" movie?`);
+        if (!isConfirmed) {
+            return;
+        }
+
         try {
             await moviesAPI.remove(movieId);
 
@@ -99,7 +104,7 @@ export default function MovieDetails() {
             {isOwner && (
                 <div className="row">
                     <div className="text-end">
-                        <a href="#" className="btn btn-primary">Edit</a>
+                        <Link to={`/movies/${movieId}/edit`} className="btn btn-primary">Edit</Link>
                         <a href="#" onClick={movieDeleteHandler} className="btn btn-primary">Delete</a>
                     </div>
                 </div>

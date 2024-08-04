@@ -14,7 +14,17 @@ export function useGetAllMovies() {
 }
 
 export function useGetOneMovies(movieId) {
-    const [movie, setMovie] = useState({});
+    const [movie, setMovie] = useState({
+        title: '',
+        year: '',
+        genre: '',
+        rate: '',
+        summary: '',
+        imgURL: '',
+        director: '',
+        writers: '',
+        main_cast: '',
+    });
 
     useEffect(() => {
         (async () => {
