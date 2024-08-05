@@ -6,6 +6,8 @@ import { useState } from 'react';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 
+import '../../main.css'
+
 const initialValues = {email: '', password: '', confirmPassword: ''};
 
 export default function Register() {
@@ -36,10 +38,10 @@ export default function Register() {
     <Form onSubmit={submitHandler}>
       <Form.Group className="mb-3">
         <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" name='email' value={values.email} onChange={changeHandler} placeholder="Enter email" />
+        <Form.Control className='formControl' type="email" name='email' value={values.email} onChange={changeHandler} placeholder="Enter email" />
         <Form.Label>Password</Form.Label>
-        <Form.Control autoComplete="off" type="password" name="password" value={values.password} onChange={changeHandler} placeholder="Password" />
-        <Form.Control autoComplete="off" type="password" name="confirmPassword" value={values.confirmPassword} onChange={changeHandler} placeholder="Password" />
+        <Form.Control className='formControl' autoComplete="off" type="password" name="password" value={values.password} onChange={changeHandler} placeholder="Password" />
+        <Form.Control className='formControl' autoComplete="off" type="password" name="confirmPassword" value={values.confirmPassword} onChange={changeHandler} placeholder="Password" />
       </Form.Group>
       <Button variant="primary" type="submit">Login</Button>
 

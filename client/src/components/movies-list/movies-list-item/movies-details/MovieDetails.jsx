@@ -8,7 +8,7 @@ import { useGetAllCommentsMovie, useCreateCommentMovie } from "../../../../hooks
 import { useAuthContext } from "../../../../contexts/AuthContext";
 import moviesAPI from "../../../../api/moviesAPI";
 
-import styles from '../movies-details/MovieDetails.module.css'
+import '../../../../main.css'
 
 const initialValues = {
     comment: ''
@@ -57,7 +57,7 @@ export default function MovieDetails() {
         <div className="text-center mt-4">
             <div className="row">
                 <div className="col">
-                    <img className="mb-5" src={movie.imgURL} />
+                    <img className="mb-5 h-50" src={movie.imgURL} />
                     <div className="row">
                         <div className="col">
                             <h2>{movie.title}</h2>
@@ -118,7 +118,7 @@ export default function MovieDetails() {
                         <label>Add new comment:</label>
                         <Form onSubmit={submitHandler}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control className={styles['formControl']} as="textarea" name="comment" placeholder="Comment......" onChange={changeHandler} value={values.comment} rows={3} />
+                                <Form.Control className='formControl' as="textarea" name="comment" placeholder="Comment......" onChange={changeHandler} value={values.comment} rows={3} />
                             </Form.Group>
                             <Button variant="primary" type="submit" value="Add Comment">Submit</Button>
                         </Form>
