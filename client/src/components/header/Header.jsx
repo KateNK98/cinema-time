@@ -8,16 +8,13 @@ import { Link } from 'react-router-dom';
 import styles from './Header.module.css';
 import { useAuthContext } from '../../contexts/AuthContext';
 
-import background_8 from '../../../public/images/background_8.png'
-import '../../main.css'
-
 export default function Header() {
   const {isAuthenticated} = useAuthContext();
 
   return (
-    <Navbar id="navbar"  style={{ backgroundImage: `url(${background_8})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }} collapseOnSelect expand="lg" className="bg-body-tertiary">
+    <Navbar id="navbar"  className={styles['navbar']} collapseOnSelect expand="lg">
       <Container>
-        <Navbar.Brand>CinemaTime</Navbar.Brand>
+        <Navbar.Brand className={styles['navbar_text']}>CinemaTime</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -49,7 +46,7 @@ export default function Header() {
                   <Link className={styles['navigation-link']} to="/login">Login</Link>
                   <Link className={styles['navigation-link']} to="/register">Register</Link>
                 </div>) 
-            };
+            }
             {/* <Nav.Link href="#deets">More deets</Nav.Link>
             <Nav.Link eventKey={2} href="#memes">
               Dank memes
