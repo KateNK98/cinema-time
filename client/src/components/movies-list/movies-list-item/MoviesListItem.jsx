@@ -14,7 +14,7 @@ export default function MoviesListItem({
 }) {
     return(
         <>
-            <Card style={{ width: '18rem', backgroundColor: '#1f2023', boxShadow: '2px 3px 30px black' }}>
+            <Card style={{ width: '18rem', backgroundColor: '#1f2023', boxShadow: '2px 3px 30px black', marginBottom: '5%' }}>
                 <Card.Img variant="top" className={styles.card_img} src={imgURL} />
                 <Card.Body style={{backgroundColor: '#1f2023', color: '#dadada'}}>
                     <Card.Title className='mb-2'>{title}</Card.Title>
