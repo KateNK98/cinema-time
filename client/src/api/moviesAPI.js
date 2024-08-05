@@ -10,18 +10,39 @@ export const getAllMovies = async () => {
 };
 
 export const getLatestMovies = async () => {
-    const urlSearchParams = new URLSearchParams({
-        sortBy: '_createdOn desc',
-        pageSize: 3,
+    const params = new URLSearchParams({
+        sordBy: '_createdOn desc',
+        pageSize: 4,
     });
 
-    console.log(urlSearchParams.toString());
+    console.log(params.toString());
 
-    const result = await request.get(`${BASE_URL}?${urlSearchParams.toString()}`);
+    const result = await request.get(`${BASE_URL}?${params.toString()}`);
 
     const latestMovies = Object.values(result);
 
     return latestMovies;
+};
+
+export const getRatedMovie = async () => {
+    const params = new URLSearchParams();
+    params.append('sortBy', 'rate desc');  // Automatically handles space encoding
+    params.append('pageSize', '1');
+
+    console.log('Fetching URL:', `${BASE_URL}?${params.toString()}`);
+
+    try {
+        const result = await request.get(`${BASE_URL}?${params.toString()}`);
+        console.log('Fetched Result:', result);
+
+        const ratedMovie = Object.values(result);
+        console.log('Rated Movie:', ratedMovie);
+
+        return ratedMovie;
+    } catch (error) {
+        console.error('Error fetching rated movie:', error);
+        throw error;
+    }
 };
 
 export const getOneMovie = (movieId) => request.get(`${BASE_URL}/${movieId}`);
@@ -36,6 +57,7 @@ const moviesAPI = {
     getAllMovies,
     getOneMovie,
     getLatestMovies,
+    getRatedMovie,
     create,
     remove,
     update,

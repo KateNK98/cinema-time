@@ -8,6 +8,8 @@ import { useGetAllCommentsMovie, useCreateCommentMovie } from "../../../../hooks
 import { useAuthContext } from "../../../../contexts/AuthContext";
 import moviesAPI from "../../../../api/moviesAPI";
 
+import styles from '../movies-details/MovieDetails.module.css'
+
 const initialValues = {
     comment: ''
 }
@@ -104,7 +106,7 @@ export default function MovieDetails() {
             {isOwner && (
                 <div className="row">
                     <div className="text-end">
-                        <Link to={`/movies/${movieId}/edit`} className="btn btn-primary">Edit</Link>
+                        <Link to={`/movies/${movieId}/edit`} className="btn btn-primary me-3">Edit</Link>
                         <a href="#" onClick={movieDeleteHandler} className="btn btn-primary">Delete</a>
                     </div>
                 </div>
@@ -116,7 +118,7 @@ export default function MovieDetails() {
                         <label>Add new comment:</label>
                         <Form onSubmit={submitHandler}>
                             <Form.Group className="mb-3" controlId="formBasicEmail">
-                                <Form.Control as="textarea" name="comment" placeholder="Comment......" onChange={changeHandler} value={values.comment} rows={3} />
+                                <Form.Control className={styles['formControl']} as="textarea" name="comment" placeholder="Comment......" onChange={changeHandler} value={values.comment} rows={3} />
                             </Form.Group>
                             <Button variant="primary" type="submit" value="Add Comment">Submit</Button>
                         </Form>

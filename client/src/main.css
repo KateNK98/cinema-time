@@ -8,3 +8,20 @@ body {
       color: #dadada;
     }
 }
+
+.btn {
+  background-color: #101217;
+  border: #101217;
+  font-size: 16px;
+  box-shadow: 2px 3px 25px black;
+}
+
+.btn:hover {
+  background-color: #1F2023;
+  box-shadow: 15px 15px 30px black;
+}
+
+* {
+  font-size: 18px;
+  text-shadow: 2px 3px 10px black;
+}
