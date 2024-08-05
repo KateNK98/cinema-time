@@ -26,7 +26,7 @@ function App() {
       <Header />
       </header>
       
-      <Container fluid className='container-fluid' style={{ backgroundImage: `url(${background_7})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover' }}>
+      <Container fluid className='container-fluid' style={{ backgroundImage: `url(${background_7})`, backgroundRepeat: 'no-repeat', backgroundSize: 'cover', minHeight: '900px' }}>
               <main id="main-content" className='p-5'>
                 <Routes>
                   <Route path='/' element={<Home />} />
