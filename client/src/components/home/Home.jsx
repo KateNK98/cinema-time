@@ -9,6 +9,7 @@ import styles from '../home/Home.module.css'
 export default function Home() {
     const [latestMovies, setLatestMovies] = useState([]);
 
+
     useEffect (() => {
         (async () => {
             const resultMovies = await moviesAPI.getLatestMovies();
