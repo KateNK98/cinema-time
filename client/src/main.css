@@ -1,17 +1,18 @@
 body {
-    background-color: #dadada;
-    color: #1f2023;
-  }
+  background-color: #dadada;
+  color: #1f2023;
+}
 @media (prefers-color-scheme: dark) {
-    body {
-      background-color: #1f2023;
-      color: #dadada;
-    }
+  body {
+    background-color: #1f2023 !important;
+    color: #dadada !important;
+  }
 }
 
+
 .btn {
-  background-color: #101217;
-  border: #101217;
+  background-color: #101217 !important;
+  border: #101217 !important;
   font-size: 16px;
   box-shadow: 2px 3px 25px black;
 }
@@ -28,19 +29,19 @@ body {
 
 .formControl {
   margin-bottom: 1.5%;
-  background-color: #1f2023;
-  color: white;
-  box-shadow: 2px 3px 30px black;
-  border: #1f2023;
+  background-color: #1f2023 !important;
+  color: white !important;
+  box-shadow: 2px 3px 30px black !important;
+  border: #1f2023 !important;
   opacity: 0.7;
 }
 
 .formControl::placeholder {
-  color: white;
+  color: white !important;
 }
 
 .formControl:focus {
   background-color: #1f2023;
-  color: white;
+  color: white !important;
   box-shadow: 15px 15px 30px black;
 }
