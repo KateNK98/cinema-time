@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useFormMovies } from "../../hooks/useFormMovies";
@@ -12,12 +12,25 @@ import Button from "react-bootstrap/esm/Button";
 import '../../main.css'
 
 
+const initialValues = ({
+    title: '',
+    year: '',
+    genre: '',
+    rate: 0,
+    summary: '',
+    imgURL: '',
+    director: '',
+    writers: '',
+    main_cast: '',
+})
+
 export default function EditMovies() {
-    const navigate = useNavigate();
+    const navigate = useNavigate(P);
     const {movieId} = useParams();
     const [movie] = useGetOneMovies(movieId);
     const [show, setShow] = useState(false);
-
+    const initialFormValues = useMemo(() => Object.assign({}, initialValues, movie), [movie])
+   
     const closeModalHandler = () => setShow(false);
     const showModalHandler = () => setShow(true);
 
@@ -25,20 +38,20 @@ export default function EditMovies() {
         changeHandler,
         submitHandler,
         values,
-    } = useFormMovies(movie, async (values) => {
-        //const isConfirmed = confirm(`Are you sure you want to update "${movie.title}" movie?`);
-        //if (setShow(true)) {
+    } = useFormMovies(initialFormValues, async (values) => {
+        const isConfirmed = confirm(`Are you sure you want to update "${movie.title}" movie?`);
+
+        if (isConfirmed) {
         await moviesAPI.update(movieId, values);
         
         navigate(`/movies/${movieId}/details`);
-        //}
-
+        }
     });
 
-    const saveChangesHandler = async () => {
-        await submitHandler();
-        closeModalHandler();
-    };
+    // const saveChangesHandler = async () => {
+    //     await submitHandler();
+    //     closeModalHandler();
+    // };
 
     return(
         <>
@@ -56,7 +69,7 @@ export default function EditMovies() {
                 <Form.Label>Summary:</Form.Label>
                 <Form.Control className='formControl' as="textarea" name="summary" value={values.summary} onChange={changeHandler}  rows={3} placeholder="After being held captive..." />
                 <Form.Label>Rating out of 10:</Form.Label>
-                <Form.Control className='formControl' type="number" name="rate" value={values.rate} onChange={changeHandler} placeholder="7.9" />
+                <Form.Control className='formControl' type="number" name="rate" value={values.rate} onChange={changeHandler} placeholder="7" />
                 <Form.Label>Directed by:</Form.Label>
                 <Form.Control className='formControl' type="text" name="director" value={values.director} onChange={changeHandler} placeholder="Jon Favreau, ..." />
                 <Form.Label>Writing by:</Form.Label>
@@ -64,7 +77,8 @@ export default function EditMovies() {
                 <Form.Label>Main cast:</Form.Label>
                 <Form.Control className='formControl' type="text" name="main_cast" value={values.main_cast} onChange={changeHandler} placeholder="Robert Downey Jr., ..." />
             </Form.Group>
-            <Button variant="primary" onClick={showModalHandler}>
+            <Button variant="primary" type="submit">Edit movie</Button>
+            {/* <Button variant="primary" onClick={showModalHandler}>
                 Edite movie
             </Button>
 
@@ -81,10 +95,10 @@ export default function EditMovies() {
                     Save Changes
                 </Button>
                 </Modal.Footer>
-            </Modal>
+            </Modal> */}
             
             {/* <ModalEditMovie/> */}
-            {/* <Button variant="primary" type="submit">Edit movie</Button> */}
+            
         </Form>
 
         </>

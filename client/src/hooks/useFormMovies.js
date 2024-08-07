@@ -4,8 +4,9 @@ export function useFormMovies(initialValues, submitCallback) {
     const [values, setValues] = useState(initialValues);
 
     useEffect(() => {
-        setValues(initialValues);
+            setValues(initialValues);
     }, [initialValues]);
+
 
     const changeHandler = (e) => {
         setValues(state => ({

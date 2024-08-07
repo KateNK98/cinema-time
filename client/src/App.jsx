@@ -20,7 +20,8 @@ import SeriesList from './components/series-list/SeriesList.jsx';
 
 import Container from 'react-bootstrap/Container';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import background_7 from "../public/images/background_7.png";
+import background_7 from "/images/background_7.png";
+
 
 
 function App() {
@@ -46,7 +47,7 @@ function App() {
                     <Route path='/movies/create' element={<CreateMovies />} />
                     <Route path='/movies/:movieId/edit' element={<EditMovies />} />
                     <Route path='/series/create' element={<CreateSeries />} />
-                    <Route path='/series/edit' element={<EditSeries />} />
+                    <Route path='/series/:serieId/edit' element={<EditSeries />} />
                     <Route path='/logout' element={<Logout />} />
                   </Route>
                 </Routes>
