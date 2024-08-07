@@ -4,9 +4,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useFormMovies } from "../../hooks/useFormMovies";
 import { useGetOneMovies } from "../../hooks/useMovies";
 import moviesAPI from "../../api/moviesAPI";
-import ModalEditMovie from "../modal-edit-movie/ModalEditMovie";
 
-import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/esm/Button";
 import '../../main.css'
@@ -25,15 +23,11 @@ const initialValues = ({
 })
 
 export default function EditMovies() {
-    const navigate = useNavigate(P);
+    const navigate = useNavigate();
     const {movieId} = useParams();
     const [movie] = useGetOneMovies(movieId);
-    const [show, setShow] = useState(false);
     const initialFormValues = useMemo(() => Object.assign({}, initialValues, movie), [movie])
    
-    const closeModalHandler = () => setShow(false);
-    const showModalHandler = () => setShow(true);
-
     const {
         changeHandler,
         submitHandler,
@@ -47,11 +41,6 @@ export default function EditMovies() {
         navigate(`/movies/${movieId}/details`);
         }
     });
-
-    // const saveChangesHandler = async () => {
-    //     await submitHandler();
-    //     closeModalHandler();
-    // };
 
     return(
         <>
@@ -78,27 +67,6 @@ export default function EditMovies() {
                 <Form.Control className='formControl' type="text" name="main_cast" value={values.main_cast} onChange={changeHandler} placeholder="Robert Downey Jr., ..." />
             </Form.Group>
             <Button variant="primary" type="submit">Edit movie</Button>
-            {/* <Button variant="primary" onClick={showModalHandler}>
-                Edite movie
-            </Button>
-
-            <Modal show={show} onHide={closeModalHandler} animation={false}>
-                <Modal.Header closeButton>
-                <Modal.Title>Are ypu sure you want to delete this movie?</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>This will delete this movie permanently, Ypu cannot undo this action.</Modal.Body>
-                <Modal.Footer>
-                <Button variant="secondary" onClick={closeModalHandler}>
-                    Cancel
-                </Button>
-                <Button variant="primary"  type="submit"  onClick={closeModalHandler}>
-                    Save Changes
-                </Button>
-                </Modal.Footer>
-            </Modal> */}
-            
-            {/* <ModalEditMovie/> */}
-            
         </Form>
 
         </>

@@ -29,8 +29,9 @@ export default function MovieDetails() {
     } = useFormMovies(initialValues, async ({comment}) => {
         try {
             const newComment = await createComment(movieId, comment);
-
+            console.log(newComment)
             setComments(oldComments => [...oldComments, {...newComment, author: {email}}]);
+            
         } catch (err) {
             console.log(err.message);
         }
