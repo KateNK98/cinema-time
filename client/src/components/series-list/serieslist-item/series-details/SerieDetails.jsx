@@ -21,7 +21,7 @@ export default function SerieDetails() {
     const {serieId} = useParams();
     const [comments, setComments] = useGetAllCommentsSerie(serieId);
     const createComment = useCreateCommentSerie();
-    const {userId} = useAuthContext();
+    const {userId, email} = useAuthContext();
     const [serie] = useGetOneSeries(serieId);
     const {isAuthenticated} = useAuthContext();
     const {
@@ -32,7 +32,7 @@ export default function SerieDetails() {
         try {
             const newComment = await createComment(serieId, comment);
 
-            setComments(oldComments => [...oldComments, newComment]);
+            setComments(oldComments => [...oldComments, {...newComment, author: {email}}]);
         } catch (err) {
             console.log(err.message);
         }
