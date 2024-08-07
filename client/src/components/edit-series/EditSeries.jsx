@@ -1,22 +1,35 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
 import { useGetOneSeries } from "../../hooks/useSeries";
 import { useFormSeries } from "../../hooks/useFormSeries";
-import seriesAPI from "../../api/seriesAPI";
 
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import Button from "react-bootstrap/esm/Button";
 import '../../main.css'
+import seriesAPI from "../../api/seriesAPI";
 
+
+const initialValues = ({
+    title: '',
+    year: '',
+    genre: '',
+    rate: 0,
+    summary: '',
+    imgURL: '',
+    director: '',
+    writers: '',
+    main_cast: '',
+})
 
 export default function EditSeries() {
     const navigate = useNavigate();
     const {serieId} = useParams();
     const [serie] = useGetOneSeries(serieId);
     const [show, setShow] = useState(false);
-
+    const initialFormValues = useMemo(() => Object.assign({}, initialValues, serie), [serie])
+   
     const closeModalHandler = () => setShow(false);
     const showModalHandler = () => setShow(true);
 
@@ -24,11 +37,20 @@ export default function EditSeries() {
         changeHandler,
         submitHandler,
         values,
-    } = useFormSeries(serie, async (values) => {
+    } = useFormSeries(initialFormValues, async (values) => {
+        const isConfirmed = confirm(`Are you sure you want to update "${serie.title}" serie?`);
+
+        if (isConfirmed) {
         await seriesAPI.update(serieId, values);
         
         navigate(`/series/${serieId}/details`);
+        }
     });
+
+    // const saveChangesHandler = async () => {
+    //     await submitHandler();
+    //     closeModalHandler();
+    // };
 
     return(
         <>
@@ -46,7 +68,7 @@ export default function EditSeries() {
                 <Form.Label>Summary:</Form.Label>
                 <Form.Control className='formControl' as="textarea" name="summary" value={values.summary} onChange={changeHandler}  rows={3} placeholder="After being held captive..." />
                 <Form.Label>Rating out of 10:</Form.Label>
-                <Form.Control className='formControl' type="number" name="rate" value={values.rate} onChange={changeHandler} placeholder="7.9" />
+                <Form.Control className='formControl' type="number" name="rate" value={values.rate} onChange={changeHandler} placeholder="7" />
                 <Form.Label>Directed by:</Form.Label>
                 <Form.Control className='formControl' type="text" name="director" value={values.director} onChange={changeHandler} placeholder="Jon Favreau, ..." />
                 <Form.Label>Writing by:</Form.Label>
@@ -54,15 +76,16 @@ export default function EditSeries() {
                 <Form.Label>Main cast:</Form.Label>
                 <Form.Control className='formControl' type="text" name="main_cast" value={values.main_cast} onChange={changeHandler} placeholder="Robert Downey Jr., ..." />
             </Form.Group>
-            <Button variant="primary" onClick={showModalHandler}>
-                Edite Serie
+            <Button variant="primary" type="submit">Edit serie</Button>
+            {/* <Button variant="primary" onClick={showModalHandler}>
+                Edite movie
             </Button>
 
             <Modal show={show} onHide={closeModalHandler} animation={false}>
                 <Modal.Header closeButton>
-                <Modal.Title>Are ypu sure you want to delete this series?</Modal.Title>
+                <Modal.Title>Are ypu sure you want to delete this movie?</Modal.Title>
                 </Modal.Header>
-                <Modal.Body>This will delete this serie permanently, Ypu cannot undo this action.</Modal.Body>
+                <Modal.Body>This will delete this movie permanently, Ypu cannot undo this action.</Modal.Body>
                 <Modal.Footer>
                 <Button variant="secondary" onClick={closeModalHandler}>
                     Cancel
@@ -71,7 +94,10 @@ export default function EditSeries() {
                     Save Changes
                 </Button>
                 </Modal.Footer>
-            </Modal>
+            </Modal> */}
+            
+            {/* <ModalEditMovie/> */}
+            
         </Form>
 
         </>

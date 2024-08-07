@@ -10,6 +10,7 @@ const getAllSerieComments = (serieId) => {
         where: `serieId="${serieId}"`,
         load: `author=_ownerId:users`,
     });
+
     return requester.get(`${BASE_URL}?${params.toString()}`);
 }
 

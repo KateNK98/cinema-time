@@ -55,7 +55,7 @@ export default function CreateMovies() {
                 <Form.Label>Summary:</Form.Label>
                 <Form.Control className='formControl' as="textarea" name="summary" value={values.summary} onChange={changeHandler}  rows={3} placeholder="After being held captive..." />
                 <Form.Label>Rating out of 10:</Form.Label>
-                <Form.Control className='formControl' type="number" name="rate" value={values.rate} onChange={changeHandler} placeholder="7.9" />
+                <Form.Control className='formControl' type="number" name="rate" value={values.rate} onChange={changeHandler} placeholder="7" />
                 <Form.Label>Directed by:</Form.Label>
                 <Form.Control className='formControl' type="text" name="director" value={values.director} onChange={changeHandler} placeholder="Jon Favreau, ..." />
                 <Form.Label>Writing by:</Form.Label>
