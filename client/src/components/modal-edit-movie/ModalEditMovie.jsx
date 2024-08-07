@@ -2,28 +2,28 @@ import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 
-function Example() {
+function ModalEditMovie() {
   const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const closeModalHandler = () => setShow(false);
+  const showModalHandler = () => setShow(true);
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
+      <Button variant="primary" type="submit" onClick={showModalHandler}>
+        Edite movie
       </Button>
 
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal show={show} onHide={closeModalHandler} animation={false}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Are ypu sure you want to delete this movie?</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
+        <Modal.Body>This will delete this movie permanently, Ypu cannot undo this action.</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
+          <Button variant="secondary" onClick={closeModalHandler}>
+            Cancel
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary"  type="submit" onClick={closeModalHandler}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -32,4 +32,4 @@ function Example() {
   );
 }
 
-export default Example;
+export default ModalEditMovie;

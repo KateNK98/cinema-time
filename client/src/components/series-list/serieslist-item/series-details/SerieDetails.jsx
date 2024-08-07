@@ -1,34 +1,36 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 
-import { useGetOneMovies } from "../../../../hooks/useMovies";
-import { useFormMovies } from "../../../../hooks/useFormMovies";
-import { useGetAllCommentsMovie, useCreateCommentMovie } from "../../../../hooks/useCommentsMovies";
+import { useGetOneSeries } from "../../../../hooks/useSeries";
+import { useCreateCommentSerie, useGetAllCommentsSerie } from "../../../../hooks/useCommentsSeries";
+import { useFormSeries } from "../../../../hooks/useFormSeries";
+import seriesAPI from "../../../../api/seriesAPI";
 import { useAuthContext } from "../../../../contexts/AuthContext";
-import moviesAPI from "../../../../api/moviesAPI";
+
 
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import '../../../../main.css'
 
+
 const initialValues = {
     comment: ''
 }
 
-export default function MovieDetails() {
+export default function SerieDetails() {
     const navigate = useNavigate();
-    const {movieId} = useParams();
-    const [comments, setComments] = useGetAllCommentsMovie(movieId);
-    const createComment = useCreateCommentMovie();
+    const {serieId} = useParams();
+    const [comments, setComments] = useGetAllCommentsSerie(serieId);
+    const createComment = useCreateCommentSerie();
     const {userId} = useAuthContext();
-    const [movie] = useGetOneMovies(movieId);
+    const [serie] = useGetOneSeries(serieId);
     const {isAuthenticated} = useAuthContext();
     const {
         changeHandler,
         submitHandler,
         values,
-    } = useFormMovies(initialValues, async ({comment}) => {
+    } = useFormSeries(initialValues, async ({comment}) => {
         try {
-            const newComment = await createComment(movieId, comment);
+            const newComment = await createComment(serieId, comment);
 
             setComments(oldComments => [...oldComments, newComment]);
         } catch (err) {
@@ -36,52 +38,52 @@ export default function MovieDetails() {
         }
     });
 
-    const movieDeleteHandler = async () => {
-        const isConfirmed = confirm(`Are you sure you want to delete "${movie.title}" movie?`);
+    const serieDeleteHandler = async () => {
+        const isConfirmed = confirm(`Are you sure you want to delete "${serie.title}" serie?`);
         if (!isConfirmed) {
             return;
         }
 
         try {
-            await moviesAPI.remove(movieId);
+            await seriesAPI.remove(serieId);
 
-            navigate('/movies')
+            navigate('/series')
         } catch (err) {
             console.log(err.message);
         }
     }
 
-    const isOwner = userId === movie._ownerId;
+    const isOwner = userId === serie._ownerId;
 
     return(
         <div className="text-center mt-4">
             <div className="row">
                 <div className="col">
-                    <img className="mb-5 h-50" src={movie.imgURL} />
+                    <img className="mb-5 h-50" src={serie.imgURL} />
                     <div className="row">
                         <div className="col">
-                            <h2>{movie.title}</h2>
-                            <p>Year: {movie.year} &#x2756; Genre: {movie.genre}</p>
-                            <p>Rating: {movie.rate}/10</p>
+                            <h2>{serie.title}</h2>
+                            <p>Year: {serie.year} &#x2756; Genre: {serie.genre}</p>
+                            <p>Rating: {serie.rate}/10</p>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
-                            <p>{movie.summary}</p>
+                            <p>{serie.summary}</p>
                         </div>
                     </div>
                     <div className="row">
                         <div className="col">
                             <h3>Directed by:</h3>
-                            <p>{movie.director}</p>
+                            <p>{serie.director}</p>
                         </div>
                         <div className="col">
                             <h3>Writing by:</h3>
-                            <p>{movie.writers}</p>
+                            <p>{serie.writers}</p>
                         </div>
                         <div className="col">
                             <h3>Main cast:</h3>
-                            <p>{movie.main_cast}</p>
+                            <p>{serie.main_cast}</p>
                         </div>
                     </div>
                     <div className="text-start">
@@ -106,8 +108,8 @@ export default function MovieDetails() {
             {isOwner && (
                 <div className="row">
                     <div className="text-end">
-                        <Link to={`/movies/${movieId}/edit`} className="btn btn-primary me-3">Edit</Link>
-                        <a href="#" onClick={movieDeleteHandler} className="btn btn-primary">Delete</a>
+                        <Link to={`/series/${serieId}/edit`} className="btn btn-primary me-3">Edit</Link>
+                        <a href="#" onClick={serieDeleteHandler} className="btn btn-primary">Delete</a>
                     </div>
                 </div>
             )}

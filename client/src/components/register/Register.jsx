@@ -1,11 +1,12 @@
-import Form from 'react-bootstrap/Form';
-import { useRegister } from '../../hooks/useAuth';
-import { useNavigate } from 'react-router-dom';
-import { useFormMovies } from '../../hooks/useFormMovies';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { useRegister } from '../../hooks/useAuth';
+import { useFormMovies } from '../../hooks/useFormMovies';
+
+import Form from 'react-bootstrap/Form';
 import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
-
 import '../../main.css'
 
 const initialValues = {email: '', password: '', confirmPassword: ''};
