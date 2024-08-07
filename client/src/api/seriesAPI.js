@@ -24,26 +24,6 @@ export const getLatestSeries = async () => {
     return latestSeries;
 };
 
-export const getRatedSerie = async () => {
-    const params = new URLSearchParams();
-    params.append('sortBy', 'rate desc');  // Automatically handles space encoding
-    params.append('pageSize', '1');
-
-    console.log('Fetching URL:', `${BASE_URL}?${params.toString()}`);
-
-    try {
-        const result = await request.get(`${BASE_URL}?${params.toString()}`);
-        console.log('Fetched Result:', result);
-
-        const ratedSerie = Object.values(result);
-        console.log('Rated Serie:', ratedSerie);
-
-        return ratedSerie;
-    } catch (error) {
-        console.error('Error fetching rated serie:', error);
-        throw error;
-    }
-};
 
 export const getOneSerie = (serieId) => request.get(`${BASE_URL}/${serieId}`);
 
@@ -57,7 +37,6 @@ const seriesAPI = {
     getAllSeries,
     getOneSerie,
     getLatestSeries,
-    getRatedSerie,
     create,
     remove,
     update,
