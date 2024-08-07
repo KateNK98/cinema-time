@@ -19,7 +19,7 @@ export default function MovieDetails() {
     const {movieId} = useParams();
     const [comments, setComments] = useGetAllCommentsMovie(movieId);
     const createComment = useCreateCommentMovie();
-    const {userId} = useAuthContext();
+    const {userId, email} = useAuthContext();
     const [movie] = useGetOneMovies(movieId);
     const {isAuthenticated} = useAuthContext();
     const {
@@ -30,7 +30,7 @@ export default function MovieDetails() {
         try {
             const newComment = await createComment(movieId, comment);
 
-            setComments(oldComments => [...oldComments, newComment]);
+            setComments(oldComments => [...oldComments, {...newComment, author: {email}}]);
         } catch (err) {
             console.log(err.message);
         }
