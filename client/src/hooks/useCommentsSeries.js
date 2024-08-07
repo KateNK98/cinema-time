@@ -1,24 +1,24 @@
 import { useEffect, useState } from 'react';
 
-import movieCommentsAPI from '../api/movie-comments-api';
+import serieCommentsAPI from '../api/series-comments-api';
 
 
 export function useCreateCommentSerie() {
-    const createHandler = (movieId, comment) => movieCommentsAPI.create(movieId, comment)
+    const createHandler = (serieId, comment) => serieCommentsAPI.create(serieId, comment)
 
     return createHandler;
 }
 
-export function useGetAllCommentsSerie(movieId) {
+export function useGetAllCommentsSerie(serieId) {
     const [comments, setComments] = useState([]);
 
     useEffect(() => {
         (async () => {
-            const result = await movieCommentsAPI.getAllSerieComments(movieId);
+            const result = await serieCommentsAPI.useGetAllCommentsSerie(serieId);
 
             setComments(result);
         })()
-    }, [movieId]);
+    }, [serieId]);
 
     return [comments, setComments];
 }

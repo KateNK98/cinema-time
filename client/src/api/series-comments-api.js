@@ -4,6 +4,7 @@ const BASE_URL = 'http://localhost:3030/data/comments-serie';
 
 const create = (serieId, text) => requester.post(BASE_URL, {serieId, text});
 
+// const getAllSerieComments = async (serieId) => await requester.get(BASE_URL);
 const getAllSerieComments = (serieId) => {
     const params = new URLSearchParams({
         where: `serieId="${serieId}"`,
