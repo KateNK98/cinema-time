@@ -18,7 +18,7 @@ export function useGetOneSeries(serieId) {
         title: '',
         year: '',
         genre: '',
-        rate: '',
+        rate: 0,
         summary: '',
         imgURL: '',
         director: '',

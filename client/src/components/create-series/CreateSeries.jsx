@@ -11,7 +11,7 @@ const initialValues = {
     title: '',
     year: '',
     genre: '',
-    rate: '',
+    rate: 0,
     summary: '',
     imgURL: '',
     director: '',

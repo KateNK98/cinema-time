@@ -19,7 +19,7 @@ export function useGetOneMovies(movieId) {
         title: '',
         year: '',
         genre: '',
-        rate: '',
+        rate: 0,
         summary: '',
         imgURL: '',
         director: '',

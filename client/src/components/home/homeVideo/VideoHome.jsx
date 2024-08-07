@@ -26,9 +26,8 @@ export default function VideoHome() {
         </div>
       </div>
       <div className="col-4">
-        <h2>Elemental</h2>
         <div>
-          <h2>Latest movies</h2>
+          <h2 className="mb-5">Rated movies</h2>
           <div className={styles.list_view}>
             {ratedMovie.length > 0
               ? ratedMovie.map(movie => <RatedMovie key={movie._id} {...movie} />)

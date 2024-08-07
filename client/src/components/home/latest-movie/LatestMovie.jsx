@@ -1,7 +1,8 @@
-import Card from 'react-bootstrap/Card';
-
-import styles from './LatestMovie.module.css'
 import { Link } from 'react-router-dom';
+
+import Card from 'react-bootstrap/Card';
+import styles from './LatestMovie.module.css'
+
 
 export default function LatestMovie({
     _id,

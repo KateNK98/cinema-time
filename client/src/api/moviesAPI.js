@@ -25,24 +25,37 @@ export const getLatestMovies = async () => {
 };
 
 export const getRatedMovie = async () => {
-    const params = new URLSearchParams();
-    params.append('sortBy', 'rate desc');  // Automatically handles space encoding
-    params.append('pageSize', '1');
+    const params = new URLSearchParams({
+        sordBy: 'rate desc',
+        pageSize: 1,
+    });
 
-    console.log('Fetching URL:', `${BASE_URL}?${params.toString()}`);
+    console.log(params.toString());
 
-    try {
-        const result = await request.get(`${BASE_URL}?${params.toString()}`);
-        console.log('Fetched Result:', result);
+    const result = await request.get(`${BASE_URL}?${params.toString()}`);
 
-        const ratedMovie = Object.values(result);
-        console.log('Rated Movie:', ratedMovie);
+    const ratedMovies = Object.values(result);
 
-        return ratedMovie;
-    } catch (error) {
-        console.error('Error fetching rated movie:', error);
-        throw error;
-    }
+    return ratedMovies;
+
+    // const params = new URLSearchParams();
+    // params.append('sortBy', 'rate desc');  // Automatically handles space encoding
+    // params.append('pageSize', '1');
+
+    // console.log('Fetching URL:', `${BASE_URL}?${params.toString()}`);
+
+    // try {
+    //     const result = await request.get(`${BASE_URL}?${params.toString()}`);
+    //     console.log('Fetched Result:', result);
+
+    //     const ratedMovie = Object.values(result);
+    //     console.log('Rated Movie:', ratedMovie);
+
+    //     return ratedMovie;
+    // } catch (error) {
+    //     console.error('Error fetching rated movie:', error);
+    //     throw error;
+    // }
 };
 
 export const getOneMovie = (movieId) => request.get(`${BASE_URL}/${movieId}`);
